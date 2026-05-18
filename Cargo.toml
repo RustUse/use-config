@@ -1,0 +1,46 @@
+[workspace]
+members = [
+    "crates/use-config",
+    "crates/use-config-key",
+    "crates/use-config-value",
+    "crates/use-config-source",
+    "crates/use-config-layer",
+    "crates/use-config-profile",
+    "crates/use-config-secret",
+]
+resolver = "2"
+
+[workspace.package]
+authors = ["RustUse Contributors"]
+edition = "2024"
+homepage = "https://rustuse.org"
+license = "MIT OR Apache-2.0"
+readme = "README.md"
+repository = "https://github.com/RustUse/use-config"
+rust-version = "1.95.0"
+version = "0.1.0"
+
+[workspace.dependencies]
+use-config = { version = "0.1.0", path = "crates/use-config" }
+use-config-key = { version = "0.1.0", path = "crates/use-config-key" }
+use-config-layer = { version = "0.1.0", path = "crates/use-config-layer" }
+use-config-profile = { version = "0.1.0", path = "crates/use-config-profile" }
+use-config-secret = { version = "0.1.0", path = "crates/use-config-secret" }
+use-config-source = { version = "0.1.0", path = "crates/use-config-source" }
+use-config-value = { version = "0.1.0", path = "crates/use-config-value" }
+
+[workspace.lints.rust]
+unsafe_code = "forbid"
+
+[workspace.metadata.rustuse.release]
+publish = false
+versioning = "lockstep-0.x"
+first-publish-candidates = [
+    "use-config-key",
+    "use-config-value",
+    "use-config-source",
+    "use-config-layer",
+    "use-config-profile",
+    "use-config-secret",
+    "use-config",
+]

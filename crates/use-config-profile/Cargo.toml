@@ -1,0 +1,21 @@
+[package]
+name = "use-config-profile"
+description = "Primitive runtime and deployment profile names for RustUse"
+publish = true
+version.workspace = true
+authors.workspace = true
+edition.workspace = true
+license.workspace = true
+repository.workspace = true
+homepage.workspace = true
+rust-version.workspace = true
+readme = "README.md"
+documentation = "https://docs.rs/use-config-profile"
+keywords = ["config", "profile", "environment", "settings"]
+categories = ["config", "data-structures"]
+
+[package.metadata.docs.rs]
+all-features = true
+
+[lints]
+workspace = true

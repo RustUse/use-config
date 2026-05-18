@@ -1,0 +1,21 @@
+[package]
+name = "use-config-secret"
+description = "Primitive secret references and redacted values for RustUse configuration helpers"
+publish = true
+version.workspace = true
+authors.workspace = true
+edition.workspace = true
+license.workspace = true
+repository.workspace = true
+homepage.workspace = true
+rust-version.workspace = true
+readme = "README.md"
+documentation = "https://docs.rs/use-config-secret"
+keywords = ["config", "secret", "redacted", "settings"]
+categories = ["config", "data-structures"]
+
+[package.metadata.docs.rs]
+all-features = true
+
+[lints]
+workspace = true

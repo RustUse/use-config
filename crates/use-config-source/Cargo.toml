@@ -1,0 +1,21 @@
+[package]
+name = "use-config-source"
+description = "Primitive configuration source identity and precedence metadata for RustUse"
+publish = true
+version.workspace = true
+authors.workspace = true
+edition.workspace = true
+license.workspace = true
+repository.workspace = true
+homepage.workspace = true
+rust-version.workspace = true
+readme = "README.md"
+documentation = "https://docs.rs/use-config-source"
+keywords = ["config", "source", "priority", "settings"]
+categories = ["config", "data-structures"]
+
+[package.metadata.docs.rs]
+all-features = true
+
+[lints]
+workspace = true

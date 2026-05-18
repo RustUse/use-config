@@ -117,7 +117,7 @@ where
 
 #[cfg(test)]
 mod tests {
-    use super::{merge_layers, merge_two_layers, ConfigLayer};
+    use super::{ConfigLayer, merge_layers, merge_two_layers};
     use use_config_key::ConfigPath;
     use use_config_source::{ConfigSource, ConfigSourceKind};
     use use_config_value::ConfigValue;

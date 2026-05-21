@@ -35,6 +35,10 @@ pub struct ConfigKey(String);
 
 impl ConfigKey {
     /// Creates a configuration key from one non-empty segment.
+    ///
+    /// # Errors
+    ///
+    /// Returns [`ConfigKeyError`] when the input is empty after trimming or contains a dot.
     pub fn new(input: impl AsRef<str>) -> Result<Self, ConfigKeyError> {
         validated_single_segment(input.as_ref()).map(|segment| Self(segment.to_owned()))
     }
@@ -72,6 +76,10 @@ pub struct ConfigSection(String);
 
 impl ConfigSection {
     /// Creates a configuration section from one non-empty segment.
+    ///
+    /// # Errors
+    ///
+    /// Returns [`ConfigKeyError`] when the input is empty after trimming or contains a dot.
     pub fn new(input: impl AsRef<str>) -> Result<Self, ConfigKeyError> {
         validated_single_segment(input.as_ref()).map(|segment| Self(segment.to_owned()))
     }
@@ -111,11 +119,19 @@ pub struct ConfigPath {
 
 impl ConfigPath {
     /// Parses a dotted configuration path.
+    ///
+    /// # Errors
+    ///
+    /// Returns [`ConfigKeyError`] when the path is empty or contains an invalid segment.
     pub fn parse(input: &str) -> Result<Self, ConfigKeyError> {
         input.parse()
     }
 
     /// Creates a path from already separated segments.
+    ///
+    /// # Errors
+    ///
+    /// Returns [`ConfigKeyError`] when no segments are provided or any segment is invalid.
     pub fn from_segments<I, S>(segments: I) -> Result<Self, ConfigKeyError>
     where
         I: IntoIterator<Item = S>,
@@ -138,13 +154,13 @@ impl ConfigPath {
 
     /// Returns the number of path segments.
     #[must_use]
-    pub fn len(&self) -> usize {
+    pub const fn len(&self) -> usize {
         self.segments.len()
     }
 
     /// Returns `true` when the path has no segments.
     #[must_use]
-    pub fn is_empty(&self) -> bool {
+    pub const fn is_empty(&self) -> bool {
         self.segments.is_empty()
     }
 

@@ -18,7 +18,7 @@ pub struct ConfigLayer {
 impl ConfigLayer {
     /// Creates an empty layer for a source.
     #[must_use]
-    pub fn new(source: ConfigSource) -> Self {
+    pub const fn new(source: ConfigSource) -> Self {
         Self {
             source,
             values: BTreeMap::new(),
@@ -27,7 +27,10 @@ impl ConfigLayer {
 
     /// Creates a layer from source metadata and values.
     #[must_use]
-    pub fn from_values(source: ConfigSource, values: BTreeMap<ConfigPath, ConfigValue>) -> Self {
+    pub const fn from_values(
+        source: ConfigSource,
+        values: BTreeMap<ConfigPath, ConfigValue>,
+    ) -> Self {
         Self { source, values }
     }
 

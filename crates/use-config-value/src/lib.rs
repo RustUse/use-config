@@ -17,9 +17,9 @@ pub enum ConfigValue {
     /// Owned string value.
     String(String),
     /// Ordered list of configuration values.
-    List(Vec<ConfigValue>),
+    List(Vec<Self>),
     /// Deterministically ordered string-keyed map.
-    Map(BTreeMap<String, ConfigValue>),
+    Map(BTreeMap<String, Self>),
 }
 
 impl ConfigValue {
@@ -61,7 +61,7 @@ impl ConfigValue {
 
     /// Returns the list value, if this is a list.
     #[must_use]
-    pub fn as_list(&self) -> Option<&[ConfigValue]> {
+    pub fn as_list(&self) -> Option<&[Self]> {
         match self {
             Self::List(value) => Some(value),
             _ => None,
@@ -70,7 +70,7 @@ impl ConfigValue {
 
     /// Returns the map value, if this is a map.
     #[must_use]
-    pub fn as_map(&self) -> Option<&BTreeMap<String, ConfigValue>> {
+    pub const fn as_map(&self) -> Option<&BTreeMap<String, Self>> {
         match self {
             Self::Map(value) => Some(value),
             _ => None,
@@ -156,14 +156,14 @@ impl From<&str> for ConfigValue {
     }
 }
 
-impl From<Vec<ConfigValue>> for ConfigValue {
-    fn from(value: Vec<ConfigValue>) -> Self {
+impl From<Vec<Self>> for ConfigValue {
+    fn from(value: Vec<Self>) -> Self {
         Self::List(value)
     }
 }
 
-impl From<BTreeMap<String, ConfigValue>> for ConfigValue {
-    fn from(value: BTreeMap<String, ConfigValue>) -> Self {
+impl From<BTreeMap<String, Self>> for ConfigValue {
+    fn from(value: BTreeMap<String, Self>) -> Self {
         Self::Map(value)
     }
 }

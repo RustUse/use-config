@@ -22,6 +22,10 @@ pub struct SecretRef(String);
 
 impl SecretRef {
     /// Creates a secret reference from a non-empty identifier.
+    ///
+    /// # Errors
+    ///
+    /// Returns [`SecretRefError`] when the input is empty after trimming.
     pub fn new(input: impl AsRef<str>) -> Result<Self, SecretRefError> {
         let trimmed = input.as_ref().trim();
 
